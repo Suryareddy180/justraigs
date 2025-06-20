@@ -233,7 +233,7 @@ def main(args):
 
     im_list = df_train_mini.image_id.values.tolist() + df_val_mini.image_id.values.tolist()
     mini_data_folder = './mini_data'
-    os.makedirs('data/mini_data/', exist_ok=True)
+    os.makedirs(mini_data_folder, exist_ok=True)
 
     for im in tqdm(im_list):
         file_name = os.path.basename(im)
