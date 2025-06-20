@@ -243,9 +243,8 @@ def main(args):
     df_train_mini.image_id = [os.path.join(mini_data_folder, os.path.basename(n)) for n in df_train_mini.image_id]
     df_val_mini.image_id = [os.path.join(mini_data_folder, os.path.basename(n)) for n in df_val_mini.image_id]
 
-    df_train_mini.to_csv('data/tr_mini_madder.csv', index=None)
-    df_val_mini.to_csv('data/vl_mini_madder.csv', index=None)
-
+    df_train_mini.to_csv('tr_mini_madder.csv', index=None)
+    df_val_mini.to_csv('vl_mini_madder.csv', index=None)
     ####################################################################
     # Third option: sanity. Hard labels. Just keep final label, if there is G3 we keep it, else, we do random selection
     def build_labels_g2overrules(df, col):
