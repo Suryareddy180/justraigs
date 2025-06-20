@@ -232,13 +232,16 @@ def main(args):
     df_val_mini = df_val1.sample(frac=0.1, random_state=0)
 
     im_list = df_train_mini.image_id.values.tolist() + df_val_mini.image_id.values.tolist()
+    mini_data_folder = './mini_data'
     os.makedirs('data/mini_data/', exist_ok=True)
 
-    for n in tqdm(range(len(im_list))):
-        im = im_list[n]
-        shutil.copyfile(im, im.replace('data/images', 'data/mini_data'))
-    df_train_mini.image_id = [n.replace('data/images/', 'data/mini_data/') for n in df_train_mini.image_id]
-    df_val_mini.image_id = [n.replace('data/images/', 'data/mini_data/') for n in df_val_mini.image_id]
+    for im in tqdm(im_list):
+        file_name = os.path.basename(im)
+        new_path = os.path.join(mini_data_folder, file_name)
+        if im != new_path:  # Avoid SameFileError
+            shutil.copyfile(im, new_path)
+    df_train_mini.image_id = [os.path.join(mini_data_folder, os.path.basename(n)) for n in df_train_mini.image_id]
+    df_val_mini.image_id = [os.path.join(mini_data_folder, os.path.basename(n)) for n in df_val_mini.image_id]
 
     df_train_mini.to_csv('data/tr_mini_madder.csv', index=None)
     df_val_mini.to_csv('data/vl_mini_madder.csv', index=None)
