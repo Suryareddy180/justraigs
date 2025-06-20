@@ -55,9 +55,10 @@ def build_labels_g2(df, col):
 def main(args):
     df = pd.read_csv(args.csv_path_in, sep=';')
     df = df.rename(columns={'Eye ID': 'image_id'})
-    df.image_id = [osp.join('data/images', n + '.JPG') for n in df.image_id.values]
-    available_ims = os.listdir('data/images')
-    available_ims = [osp.join('data/images', n) for n in available_ims]
+    real_image_path = '/kaggle/input/justraigs/Binary/RG'
+    df.image_id = [osp.join(real_image_path, n + '.JPG') for n in df.image_id.values]
+    available_ims = os.listdir(real_image_path)
+    available_ims = [osp.join(real_image_path, n) for n in available_ims]
     print('before filtering = {}'.format(len(df.image_id)))
     df = df.loc[df.image_id.isin(available_ims)]
     print('after filtering = {}'.format(len(df.image_id)))
