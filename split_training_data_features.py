@@ -56,7 +56,7 @@ def main(args):
     df = pd.read_csv(args.csv_path_in, sep=';')
     df = df.rename(columns={'Eye ID': 'image_id'})
     real_image_path = '/kaggle/input/justraigs/Binary/RG'
-    df.image_id = [osp.join(real_image_path, n + '.JPG') for n in df.image_id.values]
+    df['image_id'] = [osp.join(real_image_path, str(n) + '.JPG') for n in df['ID'].values]
     available_ims = os.listdir(real_image_path)
     available_ims = [osp.join(real_image_path, n) for n in available_ims]
     print('before filtering = {}'.format(len(df.image_id)))
