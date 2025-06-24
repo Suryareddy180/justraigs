@@ -240,7 +240,7 @@ if __name__ == '__main__':
     im_size = tuple(map(int, im_size))
 
     print('* Instantiating a {} model'.format(model_name))
-    n_classes = 10
+    n_classes = 8
     n_heads = args.n_heads
     model = get_model(args.model_name, n_classes=n_classes, n_heads=n_heads)
 
