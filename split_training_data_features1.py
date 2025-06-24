@@ -30,7 +30,7 @@ def main(args):
 
 
     num_ims = len(df)
-    meh, df_val1 = train_test_split(df_features_mad, test_size=num_ims // 5, random_state=0)
+    meh, df_val1 = train_test_split(df, test_size=num_ims // 5, random_state=0)
     meh, df_val2 = train_test_split(meh, test_size=num_ims // 5, random_state=0)
     meh, df_val3 = train_test_split(meh, test_size=num_ims // 5, random_state=0)
     df_val5, df_val4 = train_test_split(meh, test_size=num_ims // 5, random_state=0)
