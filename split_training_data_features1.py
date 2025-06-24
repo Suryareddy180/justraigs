@@ -173,20 +173,20 @@ def main(args):
     df_train4 = pd.concat([df_val1, df_val2, df_val3, df_val5], axis=0)
     df_train5 = pd.concat([df_val1, df_val2, df_val3, df_val4], axis=0)
 
-    df_train1.to_csv(osp.join(args.csvs_path_out, 'tr_features_soft_mad_f1.csv'), index=None)
-    df_val1.to_csv(osp.join(args.csvs_path_out, 'vl_features_soft_mad_f1.csv'), index=None)
+    df_train1.to_csv(osp.join(args.csvs_path_out, 'tr1.csv'), index=None)
+    df_val1.to_csv(osp.join(args.csvs_path_out, 'vl1.csv'), index=None)
 
-    df_train2.to_csv(osp.join(args.csvs_path_out, 'tr_features_soft_mad_f2.csv'), index=None)
-    df_val2.to_csv(osp.join(args.csvs_path_out, 'vl_features_soft_mad_f2.csv'), index=None)
+    df_train2.to_csv(osp.join(args.csvs_path_out, 'tr2.csv'), index=None)
+    df_val2.to_csv(osp.join(args.csvs_path_out, 'vl2.csv'), index=None)
 
-    df_train3.to_csv(osp.join(args.csvs_path_out, 'tr_features_soft_mad_f3.csv'), index=None)
-    df_val3.to_csv(osp.join(args.csvs_path_out, 'vl_features_soft_mad_f3.csv'), index=None)
+    df_train3.to_csv(osp.join(args.csvs_path_out, 'tr3.csv'), index=None)
+    df_val3.to_csv(osp.join(args.csvs_path_out, 'vl3.csv'), index=None)
 
-    df_train4.to_csv(osp.join(args.csvs_path_out, 'tr_features_soft_mad_f4.csv'), index=None)
-    df_val4.to_csv(osp.join(args.csvs_path_out, 'vl_features_soft_mad_f4.csv'), index=None)
+    df_train4.to_csv(osp.join(args.csvs_path_out, 'tr4.csv'), index=None)
+    df_val4.to_csv(osp.join(args.csvs_path_out, 'vl4.csv'), index=None)
 
-    df_train5.to_csv(osp.join(args.csvs_path_out, 'tr_features_soft_mad_f5.csv'), index=None)
-    df_val5.to_csv(osp.join(args.csvs_path_out, 'vl_features_soft_mad_f5.csv'), index=None)
+    df_train5.to_csv(osp.join(args.csvs_path_out, 'tr5.csv'), index=None)
+    df_val5.to_csv(osp.join(args.csvs_path_out, 'vl5.csv'), index=None)
 
     ####################################################################
     # Second option (maddder): add unreliable annotations to training sets:
