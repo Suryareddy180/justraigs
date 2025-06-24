@@ -21,10 +21,15 @@ def get_args_parser():
     return args
 
 def labels(label):
-    if label=='NRG': return 0
-    elif label=='RG': return 1
-    elif label=='U': return 2
-    elif label==np.nan: return 3
+    if label == 'n': return 0  # Normal
+    elif label == 'd': return 1  # Diabetes
+    elif label == 'g': return 2  # Glaucoma
+    elif label == 'c': return 3  # Cataract
+    elif label == 'a': return 4  # AMD
+    elif label == 'h': return 5  # Hypertension
+    elif label == 'm': return 6  # Myopia
+    elif label == 'o': return 7  # Others
+    else: return -1  # For undefined labels
 
 def build_labels_g1g3(df, col):
     if df['G1 '+col]==df['G3 '+col]: return df['G3 '+col]
@@ -54,7 +59,6 @@ def build_labels_g2(df, col):
 
 def main(args):
     df = pd.read_csv(args.csv_path_in)
-    df = df.rename(columns={'Eye ID': 'image_id'})
     real_image_path = '/kaggle/input/ocular-disease-recognition-odir5k/preprocessed_images'
     df.image_id = [osp.join(real_image_path, n ) for n in df.image_id.values]
     available_ims = os.listdir(real_image_path)
