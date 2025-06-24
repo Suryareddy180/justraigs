@@ -55,7 +55,7 @@ def build_labels_g2(df, col):
 def main(args):
     df = pd.read_csv(args.csv_path_in)
     df = df.rename(columns={'Eye ID': 'image_id'})
-    real_image_path = '/kaggle/input/justraigs/Binary/RG'
+    real_image_path = '/kaggle/input/ocular-disease-recognition-odir5k/preprocessed_images'
     df.image_id = [osp.join(real_image_path, n ) for n in df.image_id.values]
     available_ims = os.listdir(real_image_path)
     available_ims = [osp.join(real_image_path, n) for n in available_ims]
@@ -153,22 +153,7 @@ def main(args):
 
     df_G1 = df_G1[['image_id', 'ANRS', 'ANRI', 'RNFLDS', 'RNFLDI', 'BCLVS', 'BCLVI', 'NVT', 'DH', 'LD', 'LC']]
 
-    # G2 thought Glaucoma, G1 and G3 disagreed
-    df_G2 = df[(df['Label G2'] == 1) & (df['Label G1'] == 0) & (df['Label G3'] == 0)]
-    df_G2['ANRS'] = df_G2.apply(lambda x: build_labels_g2(x, 'ANRS'), axis=1)
-    df_G2['ANRI'] = df_G2.apply(lambda x: build_labels_g2(x, 'ANRI'), axis=1)
 
-    df_G2['RNFLDS'] = df_G2.apply(lambda x: build_labels_g2(x, 'RNFLDS'), axis=1)
-    df_G2['RNFLDI'] = df_G2.apply(lambda x: build_labels_g2(x, 'RNFLDI'), axis=1)
-
-    df_G2['BCLVS'] = df_G2.apply(lambda x: build_labels_g2(x, 'BCLVS'), axis=1)
-    df_G2['BCLVI'] = df_G2.apply(lambda x: build_labels_g2(x, 'BCLVI'), axis=1)
-
-    df_G2['NVT'] = df_G2.apply(lambda x: build_labels_g2(x, 'NVT'), axis=1)
-    df_G2['DH'] = df_G2.apply(lambda x: build_labels_g2(x, 'DH'), axis=1)
-
-    df_G2['LD'] = df_G2.apply(lambda x: build_labels_g2(x, 'LD'), axis=1)
-    df_G2['LC'] = df_G2.apply(lambda x: build_labels_g2(x, 'LC'), axis=1)
 
     df_G2 = df_G2[['image_id', 'ANRS', 'ANRI', 'RNFLDS', 'RNFLDI', 'BCLVS', 'BCLVI', 'NVT', 'DH', 'LD', 'LC']]
 
