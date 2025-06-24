@@ -25,7 +25,7 @@ def get_args_parser():
 def main(args):
     df = pd.read_csv(args.csv_path_in)
     real_image_path = '/kaggle/input/ocular-disease-recognition-odir5k/preprocessed_images'
-    df.Image ID = [osp.join(real_image_path, n ) for n in df.Image ID.values]
+    df.image = [osp.join(real_image_path, n ) for n in df.image.values]
     
 
 
