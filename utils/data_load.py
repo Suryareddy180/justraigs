@@ -49,7 +49,7 @@ class ClassDataset(Dataset):
         self.im_list = df['image_id'].values
         self.multi_label = multi_label
         if self.multi_label:
-            self.target_list = df[['ANRS', 'ANRI', 'RNFLDS', 'RNFLDI', 'BCLVS', 'BCLVI', 'NVT', 'DH', 'LD', 'LC']].values
+            self.target_list = df[['N', 'D', 'G', 'C', 'A', 'H', 'M', 'O']].values
         else:
             self.target_list = df['label'].values
         self.transforms = transforms
